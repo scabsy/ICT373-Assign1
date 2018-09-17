@@ -1,0 +1,70 @@
+﻿<!DOCTYPE HTML PUBLIC “EG”>
+<html>
+	<head>
+		<title>Assignment 1 - Question 1</title>
+		<script>
+			function checkForm()
+			{
+				var fname=document.getElementById("fname").value;
+				var sname=document.getElementById("sname").value;
+				var email=document.getElementById("email").value;
+				var dob=new Date(document.getElementById("dob").value);
+				var now=new Date();
+				var today=new Date(now.getFullYear()-8,now.getMonth(),now.getDate()+1,0,0,0,0);
+				
+				if(!fname.trim())
+				{
+					alert("Enter a first name.");
+					return false;
+				}
+				
+				if(!sname.trim())
+				{
+					alert("Enter a surname.");
+					return false;
+				}
+				
+				if(!email.trim())
+				{
+					alert("Enter an email.");
+					return false;
+				}
+				
+				if(isNaN(dob))
+				{
+					alert("Enter a valid date of birth.");
+					return false;
+				}
+				
+				if(dob.getTime()>today.getTime())
+				{
+					alert("You must be at least 8 years old to sumbit. Please enter a valid date of birth.");
+					return false;
+				}	
+				
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Assignment 1 - Question 1</h1>
+		<form method="GET" action="http://www.it.murdoch.edu.au/cgi-bin/reply.pl" onSubmit="return checkForm()">
+			First name: <input type="text" id="fname" name="fname"></br>
+			Surname: <input type="text" id="sname" name="sname"></br>
+			Email: <input type="email" id="email" name="email"></br>
+			DOB: <input type="date" id="dob" name="dob"></br>
+			
+			Favourite Sport: 
+			<select name="sport">
+				<option value="Athletics">Athletics</option>
+				<option value="Basketball">Basketball</option>
+				<option value="Cricket">Cricket</option>
+				<option value="Football">Football</option>
+				<option value="Hockey">Hockey</option>
+				<option value="Swimming">Swimming</option>
+				<option value="Tennis">Tennis</option>
+			</select></br></br>
+			<input type="submit" value="Submit">
+		</form>
+	</body>
+</html>
